@@ -14,7 +14,7 @@ const programs = [
   ["Women and Emerging Researchers in STEM", "Supporting women and early-stage researchers to enter and thrive in scientific careers."],
   ["Underserved Community Engagement", "Bringing scientific knowledge and opportunity to communities with limited access."],
   ["Research Awareness and Public Engagement", "Making biomedical research understandable and relevant to the public."],
-];
+] as const;
 
 function Outreach() {
   return (
