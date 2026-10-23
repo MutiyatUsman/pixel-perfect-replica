@@ -13,7 +13,7 @@ const ways = [
   ["Volunteer", "Support outreach events, workshops, and educational programs."],
   ["Mentor", "Share your expertise with students and emerging researchers."],
   ["Partner", "Collaborate on research, training, or community initiatives."],
-];
+] as const;
 
 function GetInvolved() {
   return (

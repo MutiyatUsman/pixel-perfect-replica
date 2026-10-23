@@ -14,7 +14,7 @@ const values = [
   ["Collaboration", "Connect researchers, educators, institutions, and communities."],
   ["Empowerment", "Equip individuals with practical knowledge and technical skills."],
   ["Community Impact", "Translate research and education into meaningful opportunities."],
-];
+] as const;
 
 function About() {
   return (

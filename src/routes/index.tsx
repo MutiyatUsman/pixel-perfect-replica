@@ -15,7 +15,7 @@ const pillars = [
   ["Mentorship & Professional Development", "Guidance for students, early-career researchers, and emerging STEM professionals."],
   ["Scientific Collaboration", "Partnerships with universities, laboratories, educators, and community organizations."],
   ["Open Science & Knowledge Sharing", "Accessible resources, documentation, and reproducibility materials for all."],
-];
+] as const;
 
 const workflow = ["Data Collection", "Integration", "Missingness Assessment", "Statistical Modeling", "Validation", "Interpretation", "Reproducible Outputs"];
 
