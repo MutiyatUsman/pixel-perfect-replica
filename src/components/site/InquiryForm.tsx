@@ -30,7 +30,8 @@ export function InquiryForm({ title, fields, submitLabel = "Submit" }: { title: 
                 </select>
               ) : (
                 <input name={f.name} type={f.type ?? "text"} required={f.required !== false} maxLength={200} className="field" />
-                    </label>
+              )}
+            </label>
           ))}
           <div className="sm:col-span-2">
             <Button type="submit">{submitLabel}</Button>

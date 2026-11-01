@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { partners, type Partner } from "@/lib/content";
 import { brandAssets } from "@/lib/brand";
-export function PartnerLogo({ name, src }: { name: string; src?: string }) {
+export function PartnerLogo({ name, src }: { name: string; src?: string | undefined }) {
   return src ? <img src={src} alt={`${name} logo`} loading="lazy" width={240} height={80} className="h-20 max-w-full object-contain object-left" /> : <p className="flex min-h-20 items-center font-display text-2xl font-extrabold text-primary">{name}</p>;
 }
 export function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
