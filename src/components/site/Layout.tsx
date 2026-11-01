@@ -30,7 +30,7 @@ export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: stri
     <section className="relative overflow-hidden bg-navy-gradient text-primary-foreground">
       <div className="container-site relative py-16 md:py-20">
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold">{eyebrow}</p>
-        <h1 className="mt-4 max-w-3xl animate-fade-up text-4xl font-extrabold md:text-5xl">{title}</h1>
+        <h1 className="mt-4 max-w-3xl animate-fade-up text-4xl font-extrabold text-primary-foreground md:text-5xl">{title}</h1>
         {subtitle && <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">{subtitle}</p>}
         {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
       </div>

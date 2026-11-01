@@ -1,0 +1,2 @@
+export const inquiryCategories = ["Research Collaboration", "Alzheimer's Research", "Statistical Methodology", "Training & Education", "Community Engagement", "Partnership Opportunity", "General Inquiry"];
+export function inquiryCategory(value: unknown) { return typeof value === "string" && inquiryCategories.includes(value) ? value : ""; }
