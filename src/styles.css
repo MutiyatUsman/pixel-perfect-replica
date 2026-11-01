@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -44,15 +44,15 @@
   --card-foreground: oklch(0.27 0.055 250);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.27 0.055 250);
-  --primary: oklch(0.27 0.055 250);
+  --primary: #102744;
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.95 0.008 240);
   --secondary-foreground: oklch(0.27 0.055 250);
   --muted: oklch(0.95 0.008 240);
   --muted-foreground: oklch(0.49 0.035 245);
-  --accent: oklch(0.53 0.09 205);
+  --accent: #087F83;
   --accent-foreground: oklch(1 0 0);
-  --gold: oklch(0.75 0.12 80);
+  --gold: #F47B20;
   --gold-foreground: oklch(0.27 0.055 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
