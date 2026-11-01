@@ -1,53 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { PageHero, Section, BulletList } from "@/components/site/Layout";
-import { InquiryForm, contactFields } from "@/components/site/InquiryForm";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { PageHero, Section } from "@/components/site/Layout";
+import { PartnerLogo } from "@/components/site/Partners";
+import { brandAssets } from "@/lib/brand";
+import { filterCourses, learningCategories } from "@/lib/content";
 import { meta } from "@/lib/meta";
-
-export const Route = createFileRoute("/academy")({
-  head: () => meta("Training Academy", "SheSMAT Training Academy: courses in statistics, programming, data science, biomedical analytics, and research development."),
-  component: Academy,
-});
-
-const categories: [string, string, string[]][] = [
-  ["Statistics and Data Analysis", "Beginner", ["Introduction to Statistics", "Statistical Reasoning", "Regression Analysis", "Statistical Inference", "Data Visualization", "Applied Data Analysis"]],
-  ["Programming for Research", "Beginner", ["Introduction to Python", "R for Statistical Computing", "Data Cleaning and Preparation", "Reproducible Computational Workflows", "Research Automation"]],
-  ["Data Science and Machine Learning", "Intermediate", ["Introduction to Data Science", "Foundations of Machine Learning", "Model Evaluation", "Responsible AI", "Interpretable Analytics"]],
-  ["Biomedical Research Analytics", "Advanced", ["Introduction to Biomedical Data", "Multimodal Data Analysis", "Missing-Data Challenges", "Statistical Modeling for Biomedical Research", "Reproducible Research Practices"]],
-  ["Research and Academic Development", "All levels", ["Research Design", "Scientific Writing", "Research Presentations", "Literature Reviews", "Research Ethics", "Academic and Professional Development"]],
-];
-const levels = ["All", "Beginner", "Intermediate", "Advanced", "All levels"];
-
+export const Route = createFileRoute("/academy")({ head: () => meta("SheSMAT Learning Academy", "DoctorAI Academy courses in mathematics, statistics, and machine learning supporting understanding of statistical and biomedical research."), component: Academy });
 function Academy() {
-  const [level, setLevel] = useState("All");
-  const shown = categories.filter((c) => level === "All" || c[1] === level);
-  return (
-    <>
-      <PageHero eyebrow="SheSMAT Training Academy" title="Building Skills. Developing Talent. Expanding Opportunity." subtitle="Practical, accessible training for students, researchers, and professionals." />
-      <Section eyebrow="Course catalog" title="Training categories" tone="white">
-        <div className="mb-8 flex flex-wrap gap-2">
-          {levels.map((l) => (
-            <button key={l} onClick={() => setLevel(l)} className={`btn !py-2 ${level === l ? "btn-primary" : "btn-outline"}`}>{l}</button>
-          ))}
-        </div>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {shown.map(([t, lvl, items]) => (
-            <div key={t} className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-card">
-              <div className="flex items-center justify-between">
-                <span className="rounded-full bg-secondary px-2.5 py-1 text-[11px] font-semibold text-accent">{lvl}</span>
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-gold">Coming Soon</span>
-              </div>
-              <h3 className="mt-4 text-lg font-bold text-primary">{t}</h3>
-              <div className="mt-4 flex-1"><BulletList items={items} /></div>
-            </div>
-          ))}
-        </div>
-      </Section>
-      <Section eyebrow="Enrollment" title="Register your interest" intro="Be the first to know when registration opens for courses and workshops.">
-        <div className="max-w-3xl">
-          <InquiryForm title="Course interest registration" submitLabel="Register interest" fields={[...contactFields, { name: "category", label: "Training category", type: "select", options: categories.map((c) => c[0]) }, { name: "notes", label: "Goals or questions", type: "textarea", required: false }]} />
-        </div>
-      </Section>
-    </>
-  );
+ const [category, setCategory] = useState("All"); const [level, setLevel] = useState("All"); const shown = filterCourses(category, level);
+ return <><PageHero eyebrow="SheSMAT Learning Academy" title="Building the Statistical and Computational Skills That Support Research Innovation" subtitle="Foundational learning in mathematics, statistics, AI, machine learning, and data science supports broader understanding of modern statistical methodology and data-driven biomedical research." /><Section eyebrow="Featured learning resources" title="DoctorAI Academy" tone="white"><PartnerLogo name="DoctorAI Academy" src={brandAssets.doctorAiLogo} /><p className="mt-3 max-w-3xl text-muted-foreground">SheSMAT Foundation incorporates educational resources from DoctorAI Academy to support foundational learning in mathematics, statistics, and machine learning. These resources contribute to the technical capacity-building activities that support broader understanding and dissemination of advanced statistical research.</p><div className="my-8 grid gap-4 sm:grid-cols-2"><label className="text-sm font-semibold">Course category<select aria-label="Course category" className="field mt-2" value={category} onChange={e => setCategory(e.target.value)}><option value="All">All categories</option>{learningCategories.map(c => <option key={c}>{c}</option>)}</select></label><label className="text-sm font-semibold">Learning level<select aria-label="Learning level" className="field mt-2" value={level} onChange={e => setLevel(e.target.value)}><option value="All">All levels</option><option>Foundational</option><option>Foundational / Introductory</option></select></label></div><p className="mb-5 text-sm text-muted-foreground" role="status">{shown.length} {shown.length === 1 ? "course" : "courses"}</p><div className="grid gap-6 md:grid-cols-2">{shown.map(c => <article key={c.slug} className="flex flex-col rounded-lg border border-border bg-background p-7"><p className="text-xs font-semibold text-accent">{c.category}</p><h3 className="mt-4 text-2xl font-bold text-primary">{c.title}</h3><p className="mt-3 text-sm text-muted-foreground">{c.provider} · {c.level}</p><p className="mt-5 flex-1 text-sm leading-relaxed text-muted-foreground">{c.description}</p><Button asChild className="mt-6 self-start"><Link to={c.slug === "foundation-math-statistics-ai" ? "/academy/foundation-math-statistics-ai" : "/academy/machine-learning-types"}>View course <ArrowUpRight /></Link></Button></article>)}</div>{shown.length === 0 && <p className="border-y border-border py-10 text-muted-foreground">No published courses match these filters.</p>}</Section><Section title="Learning connected to the research"><p className="max-w-3xl text-muted-foreground">Mathematical reasoning, statistical learning, and computational skills provide foundations for understanding graph-structured modeling, incomplete biomedical data, and reproducible evaluation. The Academy supports the NeuroGraph Sparse Analytics endeavor; it is not a separate institutional mission.</p></Section></>;
 }

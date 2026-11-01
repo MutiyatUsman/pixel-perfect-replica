@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Button } from "@/components/ui/button";
 
 export type Field = { name: string; label: string; type?: "text" | "email" | "textarea" | "select"; options?: string[]; required?: boolean };
 
@@ -7,17 +8,13 @@ export function InquiryForm({ title, fields, submitLabel = "Submit" }: { title: 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSent(true);
-    e.currentTarget.reset();
+
   };
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 shadow-card md:p-8">
+    <div className="rounded-lg border border-border bg-card p-6 shadow-card md:p-8">
       <h3 className="text-xl font-bold text-primary">{title}</h3>
-      {sent ? (
-        <div role="status" className="mt-6 rounded-xl bg-secondary p-5 text-sm text-foreground">
-          Thank you — your submission has been received. Our team will follow up by email.
-          <button className="ml-2 font-semibold text-accent underline" onClick={() => setSent(false)}>Submit another</button>
-        </div>
-      ) : (
+      <p className="mt-4 text-sm text-muted-foreground">Inquiry delivery is not configured yet. This form cannot send or save messages. Please do not include sensitive health information or restricted research data.</p>
+      {sent && <div role="alert" className="mt-5 rounded-lg border border-destructive/30 bg-secondary p-4 text-sm text-foreground">Your message was not sent. A delivery service must be configured before submissions can be received.</div>}
         <form onSubmit={onSubmit} className="mt-6 grid gap-4 sm:grid-cols-2">
           {fields.map((f) => (
             <label key={f.name} className={f.type === "textarea" ? "sm:col-span-2" : ""}>
@@ -33,14 +30,12 @@ export function InquiryForm({ title, fields, submitLabel = "Submit" }: { title: 
                 </select>
               ) : (
                 <input name={f.name} type={f.type ?? "text"} required={f.required !== false} maxLength={200} className="field" />
-              )}
-            </label>
+                    </label>
           ))}
           <div className="sm:col-span-2">
-            <button type="submit" className="btn btn-teal">{submitLabel}</button>
+            <Button type="submit">{submitLabel}</Button>
           </div>
         </form>
-      )}
     </div>
   );
 }

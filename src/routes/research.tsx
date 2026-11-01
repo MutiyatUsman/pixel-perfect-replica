@@ -1,41 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, Card } from "@/components/site/Layout";
+import { Button } from "@/components/ui/button";
+import { PageHero, Section, Card, BulletList } from "@/components/site/Layout";
+import { Dissemination, ResearchRoadmap, EvidenceLibrary } from "@/components/site/ResearchSections";
+import { researchThemes } from "@/lib/content";
 import { meta } from "@/lib/meta";
-
-export const Route = createFileRoute("/research")({
-  head: () => meta("Research & Innovation", "Statistical methodology, biomedical data analytics, and reproducible research at SheSMAT Foundation."),
-  component: Research,
-});
-
-const areas = ["Statistical methodology", "Biomedical data analytics", "Reproducible research", "Scientific validation", "Research documentation", "Interdisciplinary scientific collaboration", "Responsible analytical innovation"];
-
-function Research() {
-  return (
-    <>
-      <PageHero eyebrow="Research & innovation" title="Rigorous, transparent, reproducible science" subtitle="Our research program centers on NeuroSparse Analytics and the methods that make biomedical findings trustworthy." />
-      <Section eyebrow="Focus areas" title="Where we work" tone="white">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {areas.map((a) => <Card key={a} title={a} />)}
-        </div>
-      </Section>
-      <Section eyebrow="Projects" title="Research projects">
-        <div className="rounded-2xl border border-border bg-card p-8 shadow-card">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">In Progress</span>
-              <h3 className="mt-4 text-2xl font-bold text-primary">NeuroSparse Analytics</h3>
-              <p className="mt-2 max-w-2xl text-muted-foreground">Developing and validating a reproducible statistical framework for multimodal, incomplete biomedical data, with a primary application in Alzheimer's disease and related dementias.</p>
-              <p className="mt-4 text-sm text-foreground"><strong>Lead researcher:</strong> Mutiyat Adeola Usman</p>
-            </div>
-            <Link to="/neurosparse-analytics" className="btn btn-primary">View project</Link>
-          </div>
-          <div className="mt-6 grid gap-4 border-t border-border pt-6 text-sm text-muted-foreground md:grid-cols-3">
-            <p><strong className="text-foreground">Publications:</strong> To be listed upon release.</p>
-            <p><strong className="text-foreground">Supporting documents:</strong> Forthcoming.</p>
-            <p><strong className="text-foreground">Collaboration:</strong> <Link to="/collaborate" className="text-accent">Open to partners →</Link></p>
-          </div>
-        </div>
-      </Section>
-    </>
-  );
-}
+export const Route = createFileRoute("/research")({ head: () => meta("Research & Innovation", "NeuroGraph Sparse Analytics: statistical methods for high-dimensional, graph-structured, blockwise-incomplete biomedical data and Alzheimer's research."), component: Research });
+function Research() { return <><PageHero eyebrow="Research & innovation" title="NeuroGraph Sparse Analytics: Advancing Statistical Methods for Complex Biomedical Data" subtitle="A proposed statistical methodology endeavor, with Alzheimer's disease as its principal initial biomedical application." /><Section title="Research Overview" tone="white"><div className="grid gap-8 md:grid-cols-2"><p className="text-muted-foreground">NeuroGraph Sparse Analytics is a statistical methodology research direction focused on challenges arising from high-dimensional, interconnected, and incompletely observed biomedical data.</p><p className="text-muted-foreground">The research investigates how structural relationships among variables can inform statistical learning and estimation when data from different measurement sources are not available for every observation.</p></div></Section><Section title="The Statistical Challenge"><div className="grid gap-10 md:grid-cols-2"><p className="text-muted-foreground">Modern biomedical studies combine measurements from different sources. These challenges motivate statistical methods that incorporate structural information and make effective use of available observations.</p><BulletList items={["High-dimensional measurements", "Strong interdependence among variables", "Data collected using different technologies", "Incomplete measurement blocks across participants", "Difficult integration using conventional approaches"]} /></div></Section><Section title="Research Objectives" tone="white"><div className="grid gap-5 md:grid-cols-2">{[["Statistical Methodology Development", "Advance rigorous methods for high-dimensional and graph-structured data."], ["Incomplete Multimodal Data", "Investigate approaches for datasets where entire measurement blocks may be unavailable for some participants."], ["Reproducibility and Evaluation", "Support transparent methodological evaluation, sensitivity analysis, and reproducible computational research."], ["Biomedical Application", "Investigate the methodology in Alzheimer's disease and related neurological research."]].map(([t,d]) => <Card key={t} title={t}>{d}</Card>)}</div></Section><Section title="Research Themes"><div className="grid gap-5 md:grid-cols-3">{researchThemes.map(t => <Card key={t} title={t} />)}</div><Button asChild className="mt-8"><Link to="/research/alzheimers">Explore the Alzheimer's research focus</Link></Button><p className="mt-6 text-sm text-muted-foreground">Other possible directions, including neural organoid data and community well-being research, are related exploratory extensions — not replacements for the principal Alzheimer's focus.</p></Section><Dissemination /><ResearchRoadmap /><EvidenceLibrary /></>; }

@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "SheSMAT Foundation" },
-      { name: "description", content: "SheSMAT Foundation advances research, empowers communities, and expands opportunities through NeuroSparse Analytics." },
+      { name: "description", content: "SheSMAT Foundation supports NeuroGraph Sparse Analytics dissemination, statistical education, and Alzheimer's research collaboration." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

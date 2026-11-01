@@ -1,26 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, BulletList } from "@/components/site/Layout";
-import { InquiryForm, contactFields } from "@/components/site/InquiryForm";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { PageHero, Section } from "@/components/site/Layout";
 import { meta } from "@/lib/meta";
-
-export const Route = createFileRoute("/mentorship")({
-  head: () => meta("Mentorship & Professional Development", "Apply for mentorship or become a mentor with SheSMAT Foundation."),
-  component: Mentorship,
-});
-
-function Mentorship() {
-  return (
-    <>
-      <PageHero eyebrow="Mentorship & professional development" title="Guidance, Growth, and Opportunity." />
-      <Section eyebrow="Who we serve" title="Mentorship for emerging researchers" tone="white">
-        <div className="max-w-xl"><BulletList items={["Undergraduate students", "Graduate students", "Early-career researchers", "Aspiring data scientists", "Emerging STEM professionals"]} /></div>
-      </Section>
-      <Section>
-        <div className="grid gap-6 lg:grid-cols-2">
-          <InquiryForm title="Apply for Mentorship" submitLabel="Apply" fields={[...contactFields, { name: "stage", label: "Career stage", type: "select", options: ["Undergraduate", "Graduate", "Early-career", "Professional"] }, { name: "interests", label: "Research interests", type: "textarea" }]} />
-          <InquiryForm title="Become a Mentor" submitLabel="Volunteer as mentor" fields={[...contactFields, { name: "affiliation", label: "Affiliation" }, { name: "expertise", label: "Areas of expertise", type: "textarea" }]} />
-        </div>
-      </Section>
-    </>
-  );
-}
+export const Route = createFileRoute("/mentorship")({ head: () => meta("Research Learning & Guidance", "Learning pathways supporting statistical research and technical capacity building at SheSMAT Foundation."), component: Mentorship });
+function Mentorship() { return <><PageHero eyebrow="Technical capacity building" title="Learning pathways for emerging researchers" subtitle="Foundational education supports engagement with NeuroGraph Sparse Analytics and complex biomedical data." /><Section tone="white"><p className="text-muted-foreground">No formal mentorship program is currently announced. Learners and educators can explore published educational resources or discuss potential research learning opportunities.</p><div className="mt-6 flex flex-wrap gap-4"><Button asChild><Link to="/academy">Explore Learning Academy</Link></Button><Button asChild variant="outline"><Link to="/contact">Connect with SheSMAT</Link></Button></div></Section></>; }
