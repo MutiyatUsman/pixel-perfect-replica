@@ -4,11 +4,11 @@ import { useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { brandAssets } from "@/lib/brand";
-type NavItem = { to: "/" | "/about" | "/research" | "/research/alzheimers" | "/academy" | "/community" | "/partnerships" | "/get-involved" | "/contact"; label: string };
+type NavItem = { to: "/" | "/about" | "/neurograph" | "/research" | "/research/alzheimers" | "/academy" | "/community" | "/partnerships" | "/get-involved" | "/contact"; label: string };
 const all: NavItem[] = [
-  { to: "/", label: "Home" }, { to: "/about", label: "About SheSMAT" },
-  { to: "/research", label: "Research & Innovation" }, { to: "/research/alzheimers", label: "Alzheimer's Research" },
-  { to: "/academy", label: "Training Academy" }, { to: "/community", label: "Community Impact" },
+  { to: "/", label: "Home" }, { to: "/about", label: "About Us" },
+  { to: "/neurograph", label: "Our Flagship Endeavor" }, { to: "/research", label: "Research Dissemination" },
+  { to: "/academy", label: "Learning Academy" }, { to: "/community", label: "Community Impact" },
   { to: "/partnerships", label: "Partnerships" }, { to: "/get-involved", label: "Get Involved" }, { to: "/contact", label: "Contact" },
 ];
 export function Logo({ light = false }: { light?: boolean }) {
@@ -22,7 +22,7 @@ export function Header() {
 }
 
 export function Footer() {
-  return <footer className="bg-primary text-primary-foreground"><div className="container-site grid gap-10 py-14 md:grid-cols-3"><div><Logo light /><p className="mt-5 max-w-sm text-sm leading-relaxed text-primary-foreground/75">Supporting dissemination and responsible translation of NeuroGraph Sparse Analytics, with Alzheimer's disease as its principal initial application.</p></div><div className="md:col-span-2"><ul className="grid gap-4 text-sm sm:grid-cols-2">{all.filter(n => n.to !== "/").map(n => <li key={n.to}><Link to={n.to} className="text-primary-foreground/80 hover:text-gold">{n.label}</Link></li>)}<li><Link to="/privacy" className="text-primary-foreground/80 hover:text-gold">Privacy Policy</Link></li></ul></div></div><div className="border-t border-primary-foreground/15"><p className="container-site py-6 text-xs text-primary-foreground/70">© 2026 SheSMAT Foundation. All rights reserved.</p></div></footer>;
+  return <footer className="bg-primary text-primary-foreground"><div className="container-site grid gap-10 py-14 md:grid-cols-4"><div><Logo light /><p className="mt-5 text-sm leading-relaxed text-primary-foreground/75">Supporting dissemination and responsible scaling of NeuroGraph Sparse Analytics, principally applied to Alzheimer's research.</p></div>{[{ title: "Explore", items: all.slice(1,5) }, { title: "Connect", items: all.slice(5) }, { title: "Research", items: [{ to: "/neurograph" as const, label: "NeuroGraph Sparse Analytics" }, { to: "/research/alzheimers" as const, label: "Alzheimer's Research Focus" }, { to: "/research" as const, label: "Research Resources" }] }].map(g => <div key={g.title}><h3 className="text-sm font-bold text-gold">{g.title}</h3><ul className="mt-5 space-y-3 text-sm">{g.items.map(n => <li key={n.to}><Link to={n.to} className="text-primary-foreground/80 hover:text-gold">{n.label}</Link></li>)}</ul></div>)}</div><div className="border-t border-primary-foreground/15"><div className="container-site flex flex-wrap justify-between gap-3 py-6 text-xs text-primary-foreground/70"><p>© 2026 SheSMAT Foundation. All rights reserved.</p><Link to="/privacy">Privacy Policy</Link></div></div></footer>;
 }
 
 export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: string; title: string; subtitle?: string; children?: ReactNode }) {
