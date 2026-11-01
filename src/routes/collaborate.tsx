@@ -4,7 +4,7 @@ import { InquiryForm, contactFields } from "@/components/site/InquiryForm";
 import { meta } from "@/lib/meta";
 
 export const Route = createFileRoute("/collaborate")({
-  head: () => meta("Collaborate", "Partner with SheSMAT Foundation on research methodology, validation, training, and outreach."),
+  head: () => meta("Collaborate", "Explore potential collaboration on NeuroGraph Sparse Analytics methodology, validation, education, and Alzheimer’s research."),
   component: Collaborate,
 });
 
@@ -14,8 +14,8 @@ function Collaborate() {
       <PageHero eyebrow="Scientific collaboration" title="Collaborate With SheSMAT Foundation" />
       <Section tone="white">
         <div className="grid gap-10 md:grid-cols-2">
-          <div><p className="eyebrow">We work with</p><div className="mt-4"><BulletList items={["Universities", "Research laboratories", "Biomedical researchers", "Statisticians", "Data scientists", "Educators", "Community organizations", "Scientific nonprofits", "Industry research teams"]} /></div></div>
-          <div><p className="eyebrow">Collaboration areas</p><div className="mt-4"><BulletList items={["Research methodology development", "Statistical validation", "Joint training programs", "Community outreach partnerships", "Open science resources"]} /></div></div>
+          <div><p className="eyebrow">Potential collaborators</p><div className="mt-4"><BulletList items={["Universities", "Research laboratories", "Biomedical researchers", "Statisticians", "Data scientists", "Educators", "Community organizations", "Scientific nonprofits", "Industry research teams"]} /></div></div>
+          <div><p className="eyebrow">Collaboration areas</p><div className="mt-4"><BulletList items={["Research methodology development", "Statistical validation", "Potential technical education collaboration", "Community outreach partnerships", "Open science resources"]} /></div></div>
         </div>
       </Section>
       <Section>

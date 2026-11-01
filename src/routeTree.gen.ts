@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as CollaborateRouteImport } from './routes/collaborate'
+import { Route as CommunityRouteImport } from './routes/community'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as GetInvolvedRouteImport } from './routes/get-involved'
@@ -20,7 +21,12 @@ import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as MentorshipRouteImport } from './routes/mentorship'
 import { Route as NeurosparseAnalyticsRouteImport } from './routes/neurosparse-analytics'
 import { Route as OutreachRouteImport } from './routes/outreach'
+import { Route as PartnershipsRouteImport } from './routes/partnerships'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as AcademyFoundationMathStatisticsAiRouteImport } from './routes/academy_.foundation-math-statistics-ai'
+import { Route as AcademyMachineLearningTypesRouteImport } from './routes/academy_.machine-learning-types'
+import { Route as ResearchAlzheimersRouteImport } from './routes/research_.alzheimers'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +46,11 @@ const AcademyRoute = AcademyRouteImport.update({
 const CollaborateRoute = CollaborateRouteImport.update({
   id: '/collaborate',
   path: '/collaborate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -77,9 +88,36 @@ const OutreachRoute = OutreachRouteImport.update({
   path: '/outreach',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartnershipsRoute = PartnershipsRouteImport.update({
+  id: '/partnerships',
+  path: '/partnerships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchRoute = ResearchRouteImport.update({
   id: '/research',
   path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademyFoundationMathStatisticsAiRoute =
+  AcademyFoundationMathStatisticsAiRouteImport.update({
+    id: '/academy_/foundation-math-statistics-ai',
+    path: '/academy/foundation-math-statistics-ai',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AcademyMachineLearningTypesRoute =
+  AcademyMachineLearningTypesRouteImport.update({
+    id: '/academy_/machine-learning-types',
+    path: '/academy/machine-learning-types',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ResearchAlzheimersRoute = ResearchAlzheimersRouteImport.update({
+  id: '/research_/alzheimers',
+  path: '/research/alzheimers',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -88,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/academy': typeof AcademyRoute
   '/collaborate': typeof CollaborateRoute
+  '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/get-involved': typeof GetInvolvedRoute
@@ -95,13 +134,19 @@ export interface FileRoutesByFullPath {
   '/mentorship': typeof MentorshipRoute
   '/neurosparse-analytics': typeof NeurosparseAnalyticsRoute
   '/outreach': typeof OutreachRoute
+  '/partnerships': typeof PartnershipsRoute
+  '/privacy': typeof PrivacyRoute
   '/research': typeof ResearchRoute
+  '/academy/foundation-math-statistics-ai': typeof AcademyFoundationMathStatisticsAiRoute
+  '/academy/machine-learning-types': typeof AcademyMachineLearningTypesRoute
+  '/research/alzheimers': typeof ResearchAlzheimersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/academy': typeof AcademyRoute
   '/collaborate': typeof CollaborateRoute
+  '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/get-involved': typeof GetInvolvedRoute
@@ -109,7 +154,12 @@ export interface FileRoutesByTo {
   '/mentorship': typeof MentorshipRoute
   '/neurosparse-analytics': typeof NeurosparseAnalyticsRoute
   '/outreach': typeof OutreachRoute
+  '/partnerships': typeof PartnershipsRoute
+  '/privacy': typeof PrivacyRoute
   '/research': typeof ResearchRoute
+  '/academy/foundation-math-statistics-ai': typeof AcademyFoundationMathStatisticsAiRoute
+  '/academy/machine-learning-types': typeof AcademyMachineLearningTypesRoute
+  '/research/alzheimers': typeof ResearchAlzheimersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -117,6 +167,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/academy': typeof AcademyRoute
   '/collaborate': typeof CollaborateRoute
+  '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/get-involved': typeof GetInvolvedRoute
@@ -124,7 +175,12 @@ export interface FileRoutesById {
   '/mentorship': typeof MentorshipRoute
   '/neurosparse-analytics': typeof NeurosparseAnalyticsRoute
   '/outreach': typeof OutreachRoute
+  '/partnerships': typeof PartnershipsRoute
+  '/privacy': typeof PrivacyRoute
   '/research': typeof ResearchRoute
+  '/academy_/foundation-math-statistics-ai': typeof AcademyFoundationMathStatisticsAiRoute
+  '/academy_/machine-learning-types': typeof AcademyMachineLearningTypesRoute
+  '/research_/alzheimers': typeof ResearchAlzheimersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -133,6 +189,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/academy'
     | '/collaborate'
+    | '/community'
     | '/contact'
     | '/events'
     | '/get-involved'
@@ -140,13 +197,19 @@ export interface FileRouteTypes {
     | '/mentorship'
     | '/neurosparse-analytics'
     | '/outreach'
+    | '/partnerships'
+    | '/privacy'
     | '/research'
+    | '/academy/foundation-math-statistics-ai'
+    | '/academy/machine-learning-types'
+    | '/research/alzheimers'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/academy'
     | '/collaborate'
+    | '/community'
     | '/contact'
     | '/events'
     | '/get-involved'
@@ -154,13 +217,19 @@ export interface FileRouteTypes {
     | '/mentorship'
     | '/neurosparse-analytics'
     | '/outreach'
+    | '/partnerships'
+    | '/privacy'
     | '/research'
+    | '/academy/foundation-math-statistics-ai'
+    | '/academy/machine-learning-types'
+    | '/research/alzheimers'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/academy'
     | '/collaborate'
+    | '/community'
     | '/contact'
     | '/events'
     | '/get-involved'
@@ -168,7 +237,12 @@ export interface FileRouteTypes {
     | '/mentorship'
     | '/neurosparse-analytics'
     | '/outreach'
+    | '/partnerships'
+    | '/privacy'
     | '/research'
+    | '/academy_/foundation-math-statistics-ai'
+    | '/academy_/machine-learning-types'
+    | '/research_/alzheimers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -176,6 +250,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AcademyRoute: typeof AcademyRoute
   CollaborateRoute: typeof CollaborateRoute
+  CommunityRoute: typeof CommunityRoute
   ContactRoute: typeof ContactRoute
   EventsRoute: typeof EventsRoute
   GetInvolvedRoute: typeof GetInvolvedRoute
@@ -183,7 +258,12 @@ export interface RootRouteChildren {
   MentorshipRoute: typeof MentorshipRoute
   NeurosparseAnalyticsRoute: typeof NeurosparseAnalyticsRoute
   OutreachRoute: typeof OutreachRoute
+  PartnershipsRoute: typeof PartnershipsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ResearchRoute: typeof ResearchRoute
+  AcademyFoundationMathStatisticsAiRoute: typeof AcademyFoundationMathStatisticsAiRoute
+  AcademyMachineLearningTypesRoute: typeof AcademyMachineLearningTypesRoute
+  ResearchAlzheimersRoute: typeof ResearchAlzheimersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -214,6 +294,13 @@ declare module '@tanstack/react-router' {
       path: '/collaborate'
       fullPath: '/collaborate'
       preLoaderRoute: typeof CollaborateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -265,11 +352,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OutreachRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/partnerships': {
+      id: '/partnerships'
+      path: '/partnerships'
+      fullPath: '/partnerships'
+      preLoaderRoute: typeof PartnershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research': {
       id: '/research'
       path: '/research'
       fullPath: '/research'
       preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academy_/foundation-math-statistics-ai': {
+      id: '/academy_/foundation-math-statistics-ai'
+      path: '/academy/foundation-math-statistics-ai'
+      fullPath: '/academy/foundation-math-statistics-ai'
+      preLoaderRoute: typeof AcademyFoundationMathStatisticsAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academy_/machine-learning-types': {
+      id: '/academy_/machine-learning-types'
+      path: '/academy/machine-learning-types'
+      fullPath: '/academy/machine-learning-types'
+      preLoaderRoute: typeof AcademyMachineLearningTypesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research_/alzheimers': {
+      id: '/research_/alzheimers'
+      path: '/research/alzheimers'
+      fullPath: '/research/alzheimers'
+      preLoaderRoute: typeof ResearchAlzheimersRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -280,6 +402,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AcademyRoute: AcademyRoute,
   CollaborateRoute: CollaborateRoute,
+  CommunityRoute: CommunityRoute,
   ContactRoute: ContactRoute,
   EventsRoute: EventsRoute,
   GetInvolvedRoute: GetInvolvedRoute,
@@ -287,7 +410,13 @@ const rootRouteChildren: RootRouteChildren = {
   MentorshipRoute: MentorshipRoute,
   NeurosparseAnalyticsRoute: NeurosparseAnalyticsRoute,
   OutreachRoute: OutreachRoute,
+  PartnershipsRoute: PartnershipsRoute,
+  PrivacyRoute: PrivacyRoute,
   ResearchRoute: ResearchRoute,
+  AcademyFoundationMathStatisticsAiRoute:
+    AcademyFoundationMathStatisticsAiRoute,
+  AcademyMachineLearningTypesRoute: AcademyMachineLearningTypesRoute,
+  ResearchAlzheimersRoute: ResearchAlzheimersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,35 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, Card } from "@/components/site/Layout";
-import { InquiryForm, contactFields } from "@/components/site/InquiryForm";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { PageHero, Section } from "@/components/site/Layout";
 import { meta } from "@/lib/meta";
-
-export const Route = createFileRoute("/outreach")({
-  head: () => meta("Community Outreach", "STEM education, data literacy, and research awareness programs connecting communities with knowledge and opportunity."),
-  component: Outreach,
-});
-
-const programs = [
-  ["STEM Education Outreach", "School visits, STEM awareness sessions, introductory data science workshops, research demonstrations, and career exploration events."],
-  ["Community Data Literacy", "Helping community members understand, interpret, and use data in everyday decisions."],
-  ["Women and Emerging Researchers in STEM", "Supporting women and early-stage researchers to enter and thrive in scientific careers."],
-  ["Underserved Community Engagement", "Bringing scientific knowledge and opportunity to communities with limited access."],
-  ["Research Awareness and Public Engagement", "Making biomedical research understandable and relevant to the public."],
-] as const;
-
-function Outreach() {
-  return (
-    <>
-      <PageHero eyebrow="SheSMAT Community Outreach" title="Connecting Communities With Knowledge, Skills, and Opportunities." />
-      <Section eyebrow="Programs" title="Outreach programs" tone="white">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {programs.map(([t, d]) => <Card key={t} title={t}>{d}</Card>)}
-        </div>
-      </Section>
-      <Section eyebrow="Requests" title="Bring SheSMAT to Your Community" intro="Schools, community groups, and organizations can request a visit, workshop, or partnership.">
-        <div className="max-w-3xl">
-          <InquiryForm title="Outreach request" submitLabel="Send request" fields={[...contactFields, { name: "org", label: "Organization / school" }, { name: "type", label: "Request type", type: "select", options: ["School outreach", "Community partnership", "Workshop", "Volunteer interest"] }, { name: "details", label: "Tell us about your community", type: "textarea" }]} />
-        </div>
-      </Section>
-    </>
-  );
-}
+export const Route = createFileRoute("/outreach")({ head: () => meta("Community Outreach", "Research awareness and technical capacity building supporting the dissemination of NeuroGraph Sparse Analytics."), component: Outreach });
+function Outreach() { return <><PageHero eyebrow="Community outreach" title="Research awareness and shared analytical knowledge" subtitle="Connecting statistical methodology and Alzheimer's research with learners and community organizations." /><Section tone="white"><p className="max-w-3xl text-muted-foreground">SheSMAT's intended outreach supports research awareness, technical capacity building, and responsible community collaboration. No clinical services or formal funded outreach programs are represented.</p><Button asChild className="mt-6"><Link to="/community">Explore community engagement</Link></Button></Section></>; }

@@ -1,0 +1,10 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { PageHero, Section } from "./Layout";
+import { embedUrl, playlistUrl, type Course } from "@/lib/content";
+export function CourseDetail({ course }: { course: Course }) {
+  const [failed, setFailed] = useState(false);
+  return <><PageHero eyebrow="DoctorAI Academy · Learning resource" title={course.title} subtitle={course.description} /><Section tone="white"><Button asChild variant="link" className="mb-6 px-0"><Link to="/academy"><ArrowLeft /> Back to Courses</Link></Button><dl className="mb-8 grid gap-5 text-sm sm:grid-cols-3">{[["Provider", course.provider], ["Category", course.category], ["Level", course.level]].map(([k,v]) => <div key={k}><dt className="text-muted-foreground">{k}</dt><dd className="mt-1 font-semibold">{v}</dd></div>)}</dl><div className="aspect-video w-full overflow-hidden rounded-lg bg-secondary">{failed ? <div className="grid h-full place-items-center"><p>Player unavailable. Watch the playlist on YouTube.</p></div> : <iframe className="h-full w-full" src={embedUrl(course.playlist)} title={`${course.title} — YouTube playlist`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" onError={() => setFailed(true)} />}</div><div className="mt-6 flex flex-wrap items-center gap-5"><Button asChild><a href={playlistUrl(course.playlist)} target="_blank" rel="noopener noreferrer">Watch on YouTube <ExternalLink /></a></Button><p className="text-sm text-muted-foreground">If the embedded player is unavailable, the full playlist is accessible on YouTube.</p></div></Section></>;
+}

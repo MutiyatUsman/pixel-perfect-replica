@@ -1,34 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, Card } from "@/components/site/Layout";
-import { InquiryForm, contactFields } from "@/components/site/InquiryForm";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { PageHero, Section } from "@/components/site/Layout";
 import { meta } from "@/lib/meta";
-
-export const Route = createFileRoute("/get-involved")({
-  head: () => meta("Get Involved", "Join the SheSMAT community as a member, volunteer, mentor, or partner."),
-  component: GetInvolved,
-});
-
-const ways = [
-  ["Become a Member", "Access community resources, events, and training updates."],
-  ["Volunteer", "Support outreach events, workshops, and educational programs."],
-  ["Mentor", "Share your expertise with students and emerging researchers."],
-  ["Partner", "Collaborate on research, training, or community initiatives."],
-] as const;
-
-function GetInvolved() {
-  return (
-    <>
-      <PageHero eyebrow="Get involved" title="Join Our Community" subtitle="There are many ways to help advance knowledge and expand opportunity." />
-      <Section tone="white">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {ways.map(([t, d]) => <Card key={t} title={t}>{d}</Card>)}
-        </div>
-      </Section>
-      <Section>
-        <div className="max-w-3xl">
-          <InquiryForm title="Community registration" submitLabel="Join the community" fields={[...contactFields, { name: "role", label: "I'd like to", type: "select", options: ["Become a member", "Volunteer", "Mentor", "Partner"] }, { name: "affiliation", label: "Affiliation", required: false }, { name: "interests", label: "Interests", type: "textarea", required: false }]} />
-        </div>
-      </Section>
-    </>
-  );
-}
+export const Route = createFileRoute("/get-involved")({ head: () => meta("Get Involved", "Connect with SheSMAT Foundation around methodological research, technical education, community engagement, and interdisciplinary collaboration."), component: GetInvolved });
+function GetInvolved() { return <><PageHero eyebrow="Get involved" title="Help Advance Research Dissemination and Responsible Innovation" subtitle="Connect with the people and ideas supporting NeuroGraph Sparse Analytics and its principal Alzheimer's research application." /><Section tone="white"><div className="grid gap-8 md:grid-cols-2">{[["Researchers", "Explore methodological discussion, collaborative evaluation, and research dissemination."], ["Educators and Learners", "Access technical learning resources and foundational statistical education."], ["Community Organizations", "Explore potential research engagement and responsible data collaboration."], ["Institutional Collaborators", "Discuss research translation, training, and interdisciplinary partnerships."]].map(([t,d]) => <div key={t} className="border-t border-border pt-6"><h2 className="text-2xl font-bold">{t}</h2><p className="mt-3 text-muted-foreground">{d}</p><Button asChild variant="outline" className="mt-5"><Link to="/contact">Connect with SheSMAT</Link></Button></div>)}</div></Section></>; }
