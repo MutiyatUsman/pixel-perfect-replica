@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 
-export type Field = { name: string; label: string; type?: "text" | "email" | "textarea" | "select"; options?: string[]; required?: boolean };
+export type Field = { name: string; label: string; type?: "text" | "email" | "textarea" | "select"; options?: string[]; required?: boolean; initialValue?: string };
 
 export function InquiryForm({ title, fields, submitLabel = "Submit" }: { title: string; fields: Field[]; submitLabel?: string }) {
   const [sent, setSent] = useState(false);
@@ -24,13 +24,14 @@ export function InquiryForm({ title, fields, submitLabel = "Submit" }: { title: 
               {f.type === "textarea" ? (
                 <textarea name={f.name} required={f.required !== false} rows={4} maxLength={2000} className="field" />
               ) : f.type === "select" ? (
-                <select name={f.name} required={f.required !== false} className="field" defaultValue="">
+                <select name={f.name} required={f.required !== false} className="field" defaultValue={f.initialValue ?? ""}>
                   <option value="" disabled>Select…</option>
                   {f.options?.map((o) => <option key={o}>{o}</option>)}
                 </select>
               ) : (
                 <input name={f.name} type={f.type ?? "text"} required={f.required !== false} maxLength={200} className="field" />
-                    </label>
+              )}
+            </label>
           ))}
           <div className="sm:col-span-2">
             <Button type="submit">{submitLabel}</Button>

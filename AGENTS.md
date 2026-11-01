@@ -15,3 +15,4 @@
 - Centralize optional approved logo URLs in src/lib/brand.ts and render text-only fallbacks; changing logo assets must not require layout changes.
 - Reuse CourseDetail, Partners, and ResearchSections across pages to keep attribution, evidence, and research pathways consistent.
 - Until a real inquiry service is configured, InquiryForm must preserve entries and report non-delivery rather than simulating success.
+- Validate optional contact inquiry categories through src/lib/inquiry.ts so engagement links preselect valid categories without requiring query parameters on general contact links.

@@ -19,6 +19,7 @@ import { Route as EventsRouteImport } from './routes/events'
 import { Route as GetInvolvedRouteImport } from './routes/get-involved'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as MentorshipRouteImport } from './routes/mentorship'
+import { Route as NeurographRouteImport } from './routes/neurograph'
 import { Route as NeurosparseAnalyticsRouteImport } from './routes/neurosparse-analytics'
 import { Route as OutreachRouteImport } from './routes/outreach'
 import { Route as PartnershipsRouteImport } from './routes/partnerships'
@@ -78,6 +79,11 @@ const MentorshipRoute = MentorshipRouteImport.update({
   path: '/mentorship',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NeurographRoute = NeurographRouteImport.update({
+  id: '/neurograph',
+  path: '/neurograph',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NeurosparseAnalyticsRoute = NeurosparseAnalyticsRouteImport.update({
   id: '/neurosparse-analytics',
   path: '/neurosparse-analytics',
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/get-involved': typeof GetInvolvedRoute
   '/impact': typeof ImpactRoute
   '/mentorship': typeof MentorshipRoute
+  '/neurograph': typeof NeurographRoute
   '/neurosparse-analytics': typeof NeurosparseAnalyticsRoute
   '/outreach': typeof OutreachRoute
   '/partnerships': typeof PartnershipsRoute
@@ -152,6 +159,7 @@ export interface FileRoutesByTo {
   '/get-involved': typeof GetInvolvedRoute
   '/impact': typeof ImpactRoute
   '/mentorship': typeof MentorshipRoute
+  '/neurograph': typeof NeurographRoute
   '/neurosparse-analytics': typeof NeurosparseAnalyticsRoute
   '/outreach': typeof OutreachRoute
   '/partnerships': typeof PartnershipsRoute
@@ -173,6 +181,7 @@ export interface FileRoutesById {
   '/get-involved': typeof GetInvolvedRoute
   '/impact': typeof ImpactRoute
   '/mentorship': typeof MentorshipRoute
+  '/neurograph': typeof NeurographRoute
   '/neurosparse-analytics': typeof NeurosparseAnalyticsRoute
   '/outreach': typeof OutreachRoute
   '/partnerships': typeof PartnershipsRoute
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
     | '/get-involved'
     | '/impact'
     | '/mentorship'
+    | '/neurograph'
     | '/neurosparse-analytics'
     | '/outreach'
     | '/partnerships'
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
     | '/get-involved'
     | '/impact'
     | '/mentorship'
+    | '/neurograph'
     | '/neurosparse-analytics'
     | '/outreach'
     | '/partnerships'
@@ -235,6 +246,7 @@ export interface FileRouteTypes {
     | '/get-involved'
     | '/impact'
     | '/mentorship'
+    | '/neurograph'
     | '/neurosparse-analytics'
     | '/outreach'
     | '/partnerships'
@@ -256,6 +268,7 @@ export interface RootRouteChildren {
   GetInvolvedRoute: typeof GetInvolvedRoute
   ImpactRoute: typeof ImpactRoute
   MentorshipRoute: typeof MentorshipRoute
+  NeurographRoute: typeof NeurographRoute
   NeurosparseAnalyticsRoute: typeof NeurosparseAnalyticsRoute
   OutreachRoute: typeof OutreachRoute
   PartnershipsRoute: typeof PartnershipsRoute
@@ -338,6 +351,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MentorshipRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/neurograph': {
+      id: '/neurograph'
+      path: '/neurograph'
+      fullPath: '/neurograph'
+      preLoaderRoute: typeof NeurographRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/neurosparse-analytics': {
       id: '/neurosparse-analytics'
       path: '/neurosparse-analytics'
@@ -408,6 +428,7 @@ const rootRouteChildren: RootRouteChildren = {
   GetInvolvedRoute: GetInvolvedRoute,
   ImpactRoute: ImpactRoute,
   MentorshipRoute: MentorshipRoute,
+  NeurographRoute: NeurographRoute,
   NeurosparseAnalyticsRoute: NeurosparseAnalyticsRoute,
   OutreachRoute: OutreachRoute,
   PartnershipsRoute: PartnershipsRoute,
